@@ -1898,8 +1898,9 @@ void musicsettings_init(gui_config_t *cfg) {
 	build_nowplaying_page(cfg);
 	settingsrow_add(container, "musicsettings_now_playing", NULL, switch_screen_cb, nowplaying_screen);
 
+	// Last.fm is left out of this fork (offline use only); its page is still
+	// built, so nothing that reaches for it finds it missing.
 	lastfmsettings_init(cfg);
-	settingsrow_add(container, "lastfm", NULL, switch_screen_cb, lastfmsettings_screen());
 
 	settingsrow_heading(container, "musicsettings_section_playback");
 	build_playback_page(cfg);

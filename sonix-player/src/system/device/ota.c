@@ -19,7 +19,9 @@
 #include "src/system/net/http.h"
 #include "src/system/net/wifi.h"
 
-#define DEFAULT_REPO "Jepl4r/sonix-player"
+// This fork updates from its own releases, never from upstream's: an upstream
+// image has none of the fork's changes and would replace them.
+#define DEFAULT_REPO "EgorLappo/sonix-player"
 
 // The API's own media type and version, as GitHub asks every client to send.
 #define API_HEADERS                                                                                                    \

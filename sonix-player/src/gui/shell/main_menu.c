@@ -8,6 +8,7 @@
 #include "src/gui/shell/icons.h"
 #include "src/gui/shell/morepage.h"
 #include "src/gui/library/music.h"
+#include "src/gui/library/viewspage.h"
 #include "src/gui/settings/settings.h"
 #include "src/gui/streaming/streaming.h"
 #include "src/gui/wireless/wireless.h"
@@ -22,7 +23,10 @@ void main_menu_init(gui_config_t *cfg) {
 	// say so on their own page.
 	const grid_entry_t entries[] = {
 		{"music", &icon_menu_music, &music_screen},
-		{"streaming", &icon_menu_streaming, &streaming_screen},
+		// In this fork the Library takes the Streaming tile's place: the player
+		// is used offline only, and a build without the official keys has no
+		// Tidal, Qobuz or podcasts anyway.
+		{"views_library", &icon_menu_audiobook_library, &viewspage_screen},
 		{"wireless", &icon_menu_wireless, &wireless_screen},
 		{"audiobooks", &icon_menu_audiobooks, &audiobooks_screen},
 		// The door to the More page, which holds the DAC and anything else

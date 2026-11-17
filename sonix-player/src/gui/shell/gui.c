@@ -9,6 +9,7 @@
 #include <string.h>
 
 #include "src/gui/library/browser.h"
+#include "src/gui/library/viewspage.h"
 #include "src/gui/nowplaying/coverflow.h"
 #include "src/gui/settings/ccsettings.h"
 #include "src/gui/nowplaying/chapters.h"
@@ -592,6 +593,7 @@ void gui_init(gui_config_t *cfg) {
 	music_screen = lv_obj_create(NULL);
 	player_screen = lv_obj_create(lv_layer_top()); // a sheet, not a page: see player.h
 	browser_screen = lv_obj_create(NULL);
+	viewspage_screen = lv_obj_create(NULL);
 	settings_screen = lv_obj_create(NULL);
 	devoptions_screen = lv_obj_create(NULL);
 	processespage_screen = lv_obj_create(NULL);
@@ -699,6 +701,7 @@ void gui_init(gui_config_t *cfg) {
 	player_init(cfg);
 
 	browser_init(cfg);
+	viewspage_init(cfg);
 
 	// remap_init before settings_init: the key-remap row carries the pointer to
 	// its screen, which has to exist already. The control centre's order page
@@ -734,7 +737,7 @@ void gui_init(gui_config_t *cfg) {
 	// nor on the queue: there a stray horizontal drag would yank the player
 	// over what is being adjusted or read.
 	lv_obj_t *const player_swipe_screens[] = {
-		main_menu_screen,		 music_screen,		browser_screen,		medialist_screen,
+		main_menu_screen,		 music_screen,		browser_screen,		viewspage_screen,		medialist_screen,
 		// details_screen is deliberately absent: its page is reached FROM the
 		// player, so dragging it sideways to go back into the player would be
 		// one gesture doing two contradictory things. The back swipe is the
@@ -752,7 +755,7 @@ void gui_init(gui_config_t *cfg) {
 	// exits are their own buttons -- and the handler itself skips the main
 	// menu.
 	lv_obj_t *const back_swipe_screens[] = {
-		main_menu_screen, music_screen,			browser_screen,	  settings_screen,
+		main_menu_screen, music_screen,			browser_screen,	  viewspage_screen,  settings_screen,
 		devoptions_screen, processespage_screen, musicsettings_screen, powersettings_screen, appearance_screen,
 		language_screen,
 		medialist_screen,  medialist_tracks_screen, medialist_albums_screen, audiobooks_screen, audiobooksettings_screen,
